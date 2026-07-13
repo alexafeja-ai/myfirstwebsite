@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday ❤️</title>
+
+<!-- Modern Professional Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    overflow-x:hidden;
+    background-color: #111;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    padding: 40px 0;
+}
+
+/* ================= BACKGROUND SLIDER ================= */
+
+.slider{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:-2;
+}
+
+.slider img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:opacity 1.2s ease-in-out;
+}
+
+.slider::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: linear-gradient(135deg, rgba(15, 15, 20, 0.6), rgba(0, 0, 0, 0.4));
+}
+
+/* ================= CARD ================= */
+
+.container{
+    width:90%;
+    max-width:650px;
+    background: rgba(255, 255, 255, 0.04);
+    color: #f5f5f7;
+    text-align:center;
+    padding:50px 40px;
+    border-radius:24px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    margin: auto;
+}
+
+/* ================= TYPOGRAPHY ================= */
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+    margin-bottom: 35px;
+}
+
+h1 span {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #d4af37;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+/* ================= BUTTONS ================= */
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+button {
+    width: 100%;
+    max-width: 320px;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: 'Inter', sans-serif;
+}
+
+.btn-primary {
+    background: #ffffff;
+    color: #111111;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+.btn-primary:hover {
+    background: #f0e6d2;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* ================= MESSAGE CONTENT ================= */
+
+#message {
+    display: none;
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    animation: fadeIn 1.5s ease;
+}
+
+#message p {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    line-height: 2;
+    color: rgba(255, 255, 255, 0.85);
+    font-style: italic;
+}
+
+#message p strong {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #d4af37;
+    display: block;
+    margin-top: 25px;
+}
+
+/* ================= ANIMATIONS & EFFECTS ================= */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.heart {
+    position: fixed;
+    top: -20px;
+    font-size: 20px;
+    pointer-events: none;
+    animation: fall linear forwards;
+    z-index: 1;
+    opacity: 0.45; 
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+    .container {
+        width: 92%;
+        padding: 40px 24px;
+    }
+    h1 {
+        font-size: 32px;
+    }
+    #message p {
+        font-size: 17px;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<!-- BACKGROUND -->
+<div class="slider">
+    <img id="sliderImage" src="picture1/pic1.jpg" alt="Background">
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+
+    <h1><span>A Special Celebration</span>Happy Birthday, My Love</h1>
+
+    <div class="btn-container">
+        <button class="btn-primary" onclick="showMessage()">Read Message</button>
+        <button class="btn-secondary" onclick="goBack()">Back</button>
+    </div>
+
+    <div id="message">
+        <p>
+            Happy Birthday, Do! 🎂🎉
+            <br><br>
+            On your birthday, I just want you to know how deeply grateful and happy I am that we found our way back to each other, Darling. You truly don't know how much this second chance means to me.
+            <br><br>
+            It honestly brings tears to my eyes just thinking about it while writing this, because I know I don't have a material gift to give you right now... but please know that my heart, my love, and my support for you are entirely yours, completely unchanged.
+            <br><br>
+            May God bless you with good health, endless happiness, and success in all of your dreams, because you deserve nothing but the most beautiful things this world has to offer, My Love. May you continue serving the Lord faithfully, and may you always use the knowledge He has given you in the right direction.
+            <br><br>
+            Thank you for being such an incredible person in my life. No matter what comes our way, I will always be right here by your side.
+            <br><br>
+            <strong>I LOVE YOU SO MUCH ❤️🥰</strong>
+        </p>
+    </div>
+
+</div>
+
+<script>
+// Show Message
+function showMessage(){
+    document.getElementById("message").style.display="block";
+}
+
+// Back Button
+function goBack(){
+    if(history.length > 1){
+        history.back();
+    } else {
+        window.location.href="index.html";
+    }
+}
+
+// ================= BACKGROUND SLIDESHOW =================
+const images=[
+    "picture1/pic1.jpg.jpg",
+    "picture1/pic2.jpg.jpg",
+    "picture1/pic3.jpg.jpg",
+    "picture1/pic4.jpg.jpg",
+    "picture1/pic5.jpg.jpg",
+    "picture1/pic6.jpg.jpg",
+    "picture1/pic7.jpg.jpg",
+    "picture1/pic8.jpg.jpg",
+    "picture1/pic9.jpg.jpg",
+    "picture1/pic10.jpg.jpg",
+    "picture1/d08c3d11-4daf-48ba-a400-9766504d2759.jpg"
+];
+
+let current=0;
+const slider=document.getElementById("sliderImage");
+slider.src=images[current];
+
+setInterval(function(){
+    slider.style.opacity="0";
+    setTimeout(function(){
+        current=(current+1)%images.length;
+        slider.src=images[current];
+        slider.style.opacity="1";
+    },500);
+},4000);
+
+// ================= FALLING HEARTS =================
+function createHeart(){
+    const heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(16+Math.random()*16)+"px";
+    heart.style.animationDuration=(5+Math.random()*4)+"s";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },9000);
+}
+
+setInterval(createHeart,450);
+</script>
+
+</body>
+</html>
